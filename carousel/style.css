@@ -1,0 +1,44 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (min-width: 576px) {
+  body {
+    max-width: 700px;
+  }
+  
+  .slide {
+    display: flex;
+  }
+
+  .slide-content {
+    width: initial;
+    height: 300px;
+  }  
+  
+}
+
+
+/* // Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 767px) {
+  body {
+    max-width: 950px;
+  }
+}
+  
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+

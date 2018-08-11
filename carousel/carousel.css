@@ -1,0 +1,48 @@
+
+.slide-content > h4 {
+  margin: 0;
+}
+
+.slide {
+  display: block;
+}
+
+.slide-image {
+  margin-right: 1em;
+}
+
+.slide-content {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-self: flex-end;
+}
+.slide-content .slide-navs {
+  /* margin-top: auto; */
+}
+
+.slide-image-medium {
+  display: none;
+}
+.slide-navs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.slide-navs a{
+  cursor: pointer;
+}
+
+@media screen and (min-width: 576px) {
+   .slide {
+    display: flex;
+  }
+
+  .slide-content {
+    width: initial;
+    height: 300px;
+  }  
+  
+}
