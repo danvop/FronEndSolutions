@@ -12,6 +12,7 @@ button.addEventListener("click", function(){
         li.className = "list-group-item";
         li.textContent = input.value;
         itemList.appendChild(li);
+        input.value = "";
     }
     
         
