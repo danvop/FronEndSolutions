@@ -28,9 +28,11 @@ function handleTouchMove(evt) {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
             /* left swipe */
+            document.querySelector("h1").textContent = "left";
             console.log("left");
         } else {
             /* right swipe */
+            document.querySelector("h1").textContent = "right";
             console.log("right");
         }                       
     } else {
