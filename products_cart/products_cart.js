@@ -27,15 +27,21 @@ var Products = {
             li.textContent = item.name + " " + item.price + "$ ";
             
             //add button "+"
-            var btn = document.createElement("button");
-            btn.textContent = "+";
-            btn.setAttribute("prod-id", item.id);
-            btn.addEventListener("click", (e) => { 
-                var itemId = Number(e.target.getAttribute("prod-id"));
-                // console.log(itemId);
-                Cart.addItem(itemId);
+            var btnAdd = document.createElement("button");
+            btnAdd.textContent = "+";
+            btnAdd.addEventListener("click", () => { 
+                Cart.addItem(item.id);
+            });
+            li.appendChild(btnAdd);
+            
+            //remove buttton "-"
+            var btnRemove = document.createElement("button");
+            btnRemove.textContent = "-";
+            btnRemove.addEventListener("click", (e) => { 
+                Cart.removeItem(item.id);
+
                 });
-            li.appendChild(btn);
+            li.appendChild(btnRemove);
             //append list item to products list
             prodList.appendChild(li);
             
@@ -70,8 +76,16 @@ var Cart = {
         localStorage.setItem('cartItems', JSON.stringify(this.items));
 
     },
-    remItem : function(id) {
+    removeItem : function(id) {
+        var found = this.items.find(item => item.id === id);
+        //decrease quantity
+        found.qty--;
+        if(found.qty < 0) found.qty = 0;
+        //rerender cart
+        this.render();
 
+        //store Cart.items in localStorage
+        localStorage.setItem('cartItems', JSON.stringify(this.items));
     },
     //rerender cart after add/remove item
     render : function(){
@@ -93,6 +107,9 @@ var Cart = {
             cartList.appendChild(li);
             //calculate total
             cartSum+= found.price * cartItem.qty;
+            
+            //remove field with qty == 0
+            if(cartItem.qty === 0) li.remove();
         });
         //render total 
         var total = document.createElement("p");
