@@ -28,6 +28,7 @@ var Products = {
             
             //add button "+"
             var btnAdd = document.createElement("button");
+            btnAdd.className = "btn bg-success";
             btnAdd.textContent = "+";
             btnAdd.addEventListener("click", () => { 
                 Cart.addItem(item.id);
@@ -36,6 +37,7 @@ var Products = {
             
             //remove buttton "-"
             var btnRemove = document.createElement("button");
+            btnRemove.className = "btn bg-danger";
             btnRemove.textContent = "-";
             btnRemove.addEventListener("click", (e) => { 
                 Cart.removeItem(item.id);
