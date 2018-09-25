@@ -14,6 +14,9 @@ var shopItems = [
     {"id":3, "name":"Butter", "price":30},
 ];
 
+var search = document.getElementById("search");
+search.addEventListener("keyup", searchItem);
+
 
 //products contains list of goods
 //it populates from DB(in future)
@@ -24,11 +27,11 @@ var Products = {
             //add text content
             var li = document.createElement("li");
             li.className+="list-item";
-            li.textContent = item.name + " " + item.price + "$ ";
+            li.textContent = item.name + " - " + item.price + "$ ";
             
             //add button "+"
             var btnAdd = document.createElement("button");
-            btnAdd.className = "btn bg-success";
+            btnAdd.className = "btn bg-success media-btn";
             btnAdd.textContent = "+";
             btnAdd.addEventListener("click", () => { 
                 Cart.addItem(item.id);
@@ -37,7 +40,7 @@ var Products = {
             
             //remove buttton "-"
             var btnRemove = document.createElement("button");
-            btnRemove.className = "btn bg-danger";
+            btnRemove.className = "btn bg-danger media-btn";
             btnRemove.textContent = "-";
             btnRemove.addEventListener("click", (e) => { 
                 Cart.removeItem(item.id);
@@ -73,6 +76,9 @@ var Cart = {
         }        
         // console.log(this.items);
         this.render();
+        
+        //show cart
+        document.getElementById("cart-list").classList.remove("hidden");
 
         //store Cart.items in localStorage
         localStorage.setItem('cartItems', JSON.stringify(this.items));
@@ -81,8 +87,14 @@ var Cart = {
     removeItem : function(id) {
         var found = this.items.find(item => item.id === id);
         //decrease quantity
+        if(!found) return;
         found.qty--;
-        if(found.qty < 0) found.qty = 0;
+        if(found.qty === 0) {
+            // delete item from Cart
+
+            this.items.splice(this.items.indexOf(found),1);
+            found.qty = 0;            
+        };
         //rerender cart
         this.render();
 
@@ -100,7 +112,7 @@ var Cart = {
             
             
             var li = document.createElement("li");
-            li.textContent = found.name + " " + 
+            li.textContent = found.name + " - " + 
                              found.price + 
                              "$" + " " + 
                              "qty: " + cartItem.qty;
@@ -115,7 +127,8 @@ var Cart = {
         });
         //render total 
         var total = document.createElement("p");
-        total.innerHTML = "<b>Total:</b> " + cartSum + "$";
+        total.innerHTML = "Total: " + cartSum + "$";
+        total.className = "total";
         cartList.appendChild(total);
     },
     reset : function(){
@@ -136,3 +149,22 @@ if(storedItems) {
     Cart.render();
 }
 
+function toggleDisplay(className){
+    var elem = document.getElementById(className);
+    elem.classList.toggle('hidden');
+}
+
+
+function searchItem(e) {
+    var text = e.target.value.toLowerCase();
+    var itemList = document.getElementById("products");
+    Array.from(itemList.children).forEach(function(item) {
+        
+        var itemText = item.firstChild.textContent.toLowerCase();
+        if (itemText.indexOf(text) != -1) {
+            item.classList.remove("hidden");
+        } else {
+            item.classList.add("hidden");
+        }
+    });
+}
