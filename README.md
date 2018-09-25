@@ -15,3 +15,12 @@ Repository made to store FrontEnd examples and solutions
     - Live search menu
     - Bootstrap based
 
+
+[Shop. Products and Cart](https://test.danvop.com/FrontEndSolutions/products_cart/index.html) - Simple shopping cart lists. Native Javascript. Store cart in browser localStorage
+
+    Features:
+    -Add items
+    -Remove items
+    -Total calculation
+    -LocalStorage(sessions)
+    -Live products search
