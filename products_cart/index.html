@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="ToDo List Bootstrap">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  
+  <link rel="stylesheet" href="style.css">
+  <!-- fontawesome icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/solid.css" integrity="sha384-VGP9aw4WtGH/uPAOseYxZ+Vz/vaTb1ehm1bwx92Fm8dTrE+3boLfF1SpAtB1z7HW" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/fontawesome.css" integrity="sha384-1rquJLNOM3ijoueaaeS5m+McXPJCGdr5HcA03/VHXxcp2kX2sUrQDmFc3jR5i/C7" crossorigin="anonymous">
+
+
+  <title>SimpleShop</title>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <i class="nav-item fas fa-th-list" onclick="toggleDisplay('products-list')"></i>
+        <i class="nav-item fas fa-cart-plus" onclick="toggleDisplay('cart-list')"></i>
+        <i class="nav-item fas fa-file-invoice-dollar"></i>
+    </div>
+    <div id="products-list">
+        <div class="list-header bg-success">Products list
+            <input id="search" type="text" placeholder="Filter products">
+        </div>
+            <ul class="list" id="products">
+    
+            </ul>
+    </div>
+    
+    <div id="cart-list">
+        <div class="list-header bg-success">Cart</div>
+        <ul class="list" id="cart">
+
+        </ul>
+    <div>
+        <button class="btn btn-reset bg-danger" onclick="Cart.reset()">Reset cart</button>
+    </div>
+    </div>
+    
+             
+</div>
+ 
+</body>
+<script src="products_cart.js"></script>
+</html>
