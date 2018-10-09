@@ -24,3 +24,14 @@ Repository made to store FrontEnd examples and solutions
     -Total calculation
     -LocalStorage(sessions)
     -Live products search
+
+[Flexbox examples](https://test.danvop.com/FrontEndSolutions/flex_jw/index.html) - Flexbox examples
+
+    Features:
+    -Flex center content
+    -Flex centered navbar
+    -Flex responsive navbar
+    -Flex media default
+    -Flex media comment
+    -Flex layout
+    
